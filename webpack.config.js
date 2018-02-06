@@ -1,11 +1,12 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 module.exports = {
     entry: path.resolve(__dirname, 'webapp/src/index.js'),
     output: {
-        path: path.resolve(__dirname, 'webapp/dist/index.js'),
+        path: path.resolve(__dirname, 'webapp/dist'),
         filename: 'bundle.js'
     },
     module: {
@@ -23,7 +24,7 @@ module.exports = {
             },
             {
                 test: /\.styl/,
-                use: ExtractTextPlugin.extract({
+                use: ExtractTextWebpackPlugin.extract({
                     fallback: "style-loader",
                     use: "css-loader!stylus-loader"
                 })
@@ -52,9 +53,11 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: 'nemo chat',
-            filename: path.resolve(__dirname, 'webapp/index.html')
+            filename: path.resolve(__dirname, 'webapp/dist/index.html'),
+            template: path.resolve(__dirname, 'webapp/src/index.html')
         }),
         new ExtractTextWebpackPlugin ('styles.css')
     ]
 }
+
 
