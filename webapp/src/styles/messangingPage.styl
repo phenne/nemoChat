@@ -1,0 +1,238 @@
+.MessangingPage
+  display flex
+  flex-flow column wrap
+  justify-content center
+  align-content center
+  width 100%
+  height 100%
+  margin 0
+  padding 0
+
+.MessangingWrapper
+  display flex
+  margin auto
+  padding 0
+  box-shadow 0px 0px 10px rgba(0,0,0,0.2)
+  width 1200px
+  height 90%
+  overflow hidden
+  border-radius 3px
+  box-sizing border-box
+  background white
+
+
+  .DialogTabWrapper
+    width 350px
+    height 100%
+    .DialogSearchWrapper
+      width 100%
+      height 40px
+      border none
+      border-bottom 1px solid rgba(0,0,0,0.2)
+      margin 0
+      input
+        width 100%
+        height 100%
+        padding 0 15px
+        box-sizing border-box
+        border none
+    .MessangingWrapperScroller
+      overflow-y scroll
+      height 100%
+      .NewDialogButton
+        width 100%
+        height 70px
+        margin 0
+        border: 1px solid #4286f4;
+        cursor pointer
+        background #4286f4
+        color white
+        &:hover
+          background #1050b7
+      .DialogTab
+        position relative
+        display flex
+        flex-flow nowrap column
+        width 100%
+        height 70px
+        margin 0
+        border-bottom 1px solid rgba(0,0,0,0.2)
+        cursor pointer
+        &:hover
+          background azure
+        .DialogTabName
+          margin auto 0
+          padding 0 15px
+          font-size 14px
+          font-weight bold
+        .DialogTabSettings
+          position absolute
+          right 10px
+          top 10px
+          width 15px
+          height 15px
+          border-radius 100%
+          background grey
+          cursor pointer
+        .DialogTabContent
+          margin auto 0
+          padding 0 15px
+          font-size 14px
+        .DialogTabTime
+          position absolute
+          right 10px
+          bottom 10px
+          color rgba(0,0,0,0.4)
+          font-size 14px
+
+  .DialogWrapper
+    display table
+    table-layout fixed
+    width 850px
+    height 100%
+    border-left 1px solid rgba(0,0,0,0.2)
+
+    .NoDialogsNotification
+      display flex
+      height 100%
+      p
+        margin auto
+
+    .DialogBox
+      position relative
+      display table-row
+      margin 0
+      width 100%
+      height 100%
+      .DialogBoxInner
+        position relative
+        height 100%
+        border-bottom 1px solid rgba(0,0,0,0.2)
+        .DialogBoxInnerFixer
+          position absolute
+          top 0
+          bottom 0
+          width 100%
+          height 100%
+          display flex
+          flex-flow nowrap column
+          .DialogBoxHeader
+            display flex
+            height 40px
+            border-bottom 1px solid rgba(0,0,0,0.2)
+            overflow hidden
+            input
+              border none
+              border-right 1px solid rgba(0,0,0,0.2)
+              width calc(100% - 220px)
+              height 100%
+              padding 0 15px
+              box-sizing border-box
+            .DialogBoxHeaderButtonsWrapper
+              display flex
+              height 100%
+              width 220px
+              .Disconnect
+              .Report
+                margin auto
+                height 70%
+                border none
+                border-radius 3px
+                cursor pointer
+                background #4286f4
+                color white
+                &:hover
+                  background #1050b7
+
+          .ReplicasWrapper
+            overflow-y scroll
+            height calc(100% - 40px)
+            .DateDivider
+              display flex
+              span
+                margin auto
+                padding 15px
+                font-size 14px
+                color rgba(0,0,0,0.7)
+            .DialogReplica
+              display block
+              position relative
+              width 100%
+              padding 15px
+              box-sizing border-box
+              margin-bottom 5px
+              cursor pointer
+              &:hover
+                background honeydew
+              &.interlocutor
+                .DialogReplicaIdentifier
+                  color blue
+              &.choosed
+                background honeydew
+                .DialogReplicaChoosed
+                  position absolute
+                  top 0
+                  display inline-block
+                  width 40px
+                  height 100%
+                  border-radius 100%
+                  &:after
+                    content ''
+                    position absolute
+                    top 50%
+                    left 50%
+                    height 20px
+                    width 20px
+                    background cornflowerblue
+                    border-radius 100%
+
+            .DialogReplicaIdentifier
+              display block
+              padding-bottom 10px
+              font-weight bold
+              font-size 12px
+            .DialogReplicaContent
+              display inline-block
+              width calc(100% - 80px)
+            .DialogReplicaSendTime
+              display inline-block
+              width 40px
+              font-size 12px
+              color rgba(0,0,0,0.4)
+
+
+
+
+    .MessageBox
+      display table-row
+      max-height 120px
+      box-sizing border-box
+      .MessageBoxInner
+        display flex
+        width 100%
+        .MessageEditor
+          margin 10px auto
+          padding 10px 15px
+          min-height 40px
+          max-height 100px
+          overflow-y auto
+          width calc(100% - 230px)
+          border-radius 5px
+          resize none
+          box-sizing border-box
+          border 1px solid rgba(0,0,0,0.2)
+        .SendMessageButton
+        .AudioMessageButton
+        .EmojiButton
+        .AddFilesButton
+          margin auto
+          margin-bottom 10px
+          height 40px
+          width 40px
+          border none
+          border-radius 3px
+          cursor pointer
+          background #4286f4
+          color white
+          &:hover
+            background #1050b7

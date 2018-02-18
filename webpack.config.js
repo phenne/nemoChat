@@ -12,15 +12,18 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js/,
+                test: /\.jsx?$/,
                 exclude: [
                     path.resolve(__dirname, 'node_modules')
                 ],
-                use: 'babel-loader'
-            },
-            {
-                test: /\.jsx/,
-                use: ['react-hot-loader/webpack']
+                // use: ['react-hot-loader/webpack']
+                loader: require.resolve('babel-loader'),
+                options: {
+                    cacheDirectory: true,
+                    plugins: [
+                        'react-hot-loader/babel'
+                    ]
+                }
             },
             {
                 test: /\.styl/,
@@ -44,6 +47,9 @@ module.exports = {
                 use: 'url-loader'
             }
         ]
+    },
+    resolve: {
+        extensions: ['.js', '.jsx']
     },
     devServer: {
         contentBase: path.resolve(__dirname, 'webapp/dist'),
