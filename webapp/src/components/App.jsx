@@ -4,8 +4,8 @@ import '../styles/index.styl'
 import '../styles/spinner.styl'
 import '../styles/messangingPage.styl'
 
-import DialogWrapper from './DialogWrapper'
 import DialogTabWrapper from './DialogTabWrapper'
+import DialogWrapper from './DialogWrapper'
 
 const App = () => (
     <div className="App">
