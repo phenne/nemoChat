@@ -1,28 +1,27 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import DialogTab from './DialogTab'
+import DialogSearchWrapperContainer from '../containers/DialogSearchWrapperContainer'
 
-const DialogTabWrapper = () => (
+const DialogTabWrapper = ({DialogTabs}) => (
     <div className="DialogTabWrapper">
-        <div className="DialogSearchWrapper">
-            <input type="text" placeholder="Поиск"/>
-        </div>
-
-        <div className="MessangingWrapperScroller">
-            <button className="NewDialogButton">Найти собеседника</button>
-
-            <DialogTab author="Пушкин" content="Последнее сообщение..." time="14:12"/>
-            <DialogTab author="Гарри" content="Последнее сообщение..." time="14:12"/>
-            <DialogTab author="Аноним" content="Последнее сообщение..." time="14:12"/>
-            <DialogTab author="Путин" content="Последнее сообщение..." time="14:12"/>
-            <DialogTab author="Стив Роджерс" content="Последнее сообщение..." time="14:12"/>
-            <DialogTab author="Илон Маск" content="Последнее сообщение..." time="14:12"/>
-            <DialogTab author="Наруто" content="Последнее сообщение..." time="14:12"/>
-            <DialogTab author="Навальный" content="Последнее сообщение..." time="14:12"/>
-            <DialogTab author="Довакин" content="Последнее сообщение..." time="14:12"/>
-        </div>
-
+        <DialogSearchWrapperContainer/>
+            <div className="MessangingWrapperScroller">
+                <button className="NewDialogButton">Найти собеседника</button>
+                {DialogTabs.map((item, i) => ((<DialogTab key={i} {...item} />)))}
+            </div>
     </div>
 )
+
+DialogTabWrapper.propTypes = {
+    DialogTabs: PropTypes.arrayOf(
+        PropTypes.shape({
+            author: PropTypes.string.isRequired,
+            content: PropTypes.string.isRequired,
+            time: PropTypes.instanceOf(Date).isRequired
+        })
+    )
+}
 
 export default DialogTabWrapper
