@@ -6,7 +6,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: path.resolve(__dirname, 'webapp/src/index.js'),
     output: {
-        path: path.resolve(__dirname, 'webapp/dist'),
+        // path: path.resolve(__dirname, 'webapp/dist'),
+        path: path.resolve(__dirname, 'src/main/resources/static'),
         filename: 'bundle.js'
     },
     module: {
@@ -57,11 +58,12 @@ module.exports = {
         port: 3000
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            title: 'nemo chat',
-            filename: path.resolve(__dirname, 'webapp/dist/index.html'),
-            template: path.resolve(__dirname, 'webapp/src/index.html')
-        }),
+        // new HtmlWebpackPlugin({
+        //     title: 'nemo chat',
+        //     // filename: path.resolve(__dirname, 'webapp/dist/index.html'),
+        //     filename: path.resolve(__dirname, 'src/main/resources/templates/index.html'),
+        //     template: path.resolve(__dirname, 'webapp/src/index.html')
+        // }),
         new ExtractTextWebpackPlugin ('styles.css')
     ]
 }
