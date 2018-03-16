@@ -9,11 +9,20 @@ import org.springframework.data.mongodb.core.mapping.Document;
 /**
  * @author drius on 16.03.2018.
  */
-@Document(collection = "user")
+@Document(collection = "message")
 @Data
-public class User {
+public class Message {
 
     @Id
     private ObjectId id;
-    private String userName;
+
+    private Long creationDate;
+
+    @DBRef
+    private User author;
+
+    private String messageText;
+
+    @DBRef
+    private Dialog dialog;
 }

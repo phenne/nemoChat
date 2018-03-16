@@ -2,13 +2,14 @@ package com.driusandilham.nemochat.config;
 
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
+import com.mongodb.ServerAddress;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.data.authentication.UserCredentials;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -17,6 +18,7 @@ import java.util.Collections;
  * @author drius on 16.03.2018.
  */
 @Configuration
+@EnableMongoRepositories("com.driusandilham.nemochat.db.repository")
 @PropertySource("classpath:db.properties")
 public class MongoConfig extends AbstractMongoConfiguration {
 
@@ -42,13 +44,14 @@ public class MongoConfig extends AbstractMongoConfiguration {
 
     @Override
     public Mongo mongo() {
-        return new MongoClient(host, Integer.parseInt(port));
+//        MongoCredential credential = MongoCredential.createCredential(username, getDatabaseName(), password.toCharArray());
+        return new MongoClient(new ServerAddress(host, Integer.parseInt(port)));
     }
 
     @Override
     @Bean
     public MongoTemplate mongoTemplate() {
-        return new MongoTemplate(mongo(), getDatabaseName(), new UserCredentials(username, password));
+        return new MongoTemplate(mongo(), getDatabaseName());
     }
 
     @Override

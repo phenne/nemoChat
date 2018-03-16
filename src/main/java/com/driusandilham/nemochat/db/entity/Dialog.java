@@ -6,14 +6,21 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 /**
  * @author drius on 16.03.2018.
  */
-@Document(collection = "user")
 @Data
-public class User {
+@Document(collection = "dialog")
+public class Dialog {
 
     @Id
     private ObjectId id;
-    private String userName;
+
+    @DBRef
+    private User dialogCreator;
+
+    @DBRef
+    private List<User> participants;
 }
