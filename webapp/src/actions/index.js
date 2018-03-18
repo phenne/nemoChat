@@ -35,7 +35,7 @@ export const report = () => ({
     type: REPORT
 })
 
-export const searchDialog = (string) => ({
+export const searchDialog = (searchString) => ({
         type: SEARCH_DIALOG,
-        string
+        searchString
 })

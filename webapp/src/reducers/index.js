@@ -15,14 +15,18 @@ import {
 function dialogs (state = [], action) {
     switch (action.type) {
         case SEARCH_DIALOG:
-            let new_dialogs = [...state];
-            new_dialogs.map((item, index, arr) => {
-                item.display = !item.author.indexOf(action.string);
-            });
-            return new_dialogs
+            return searchDialogReduce(state, action)
         default:
             return state
     }
+}
+
+function searchDialogReduce(state, action) {
+    let new_dialogs = [...state];
+    new_dialogs.map((item, index, arr) => {
+        item.display = !item.author.toLowerCase().indexOf(action.searchString.toLowerCase());
+    });
+    return new_dialogs
 }
 
 const appReducer = combineReducers({
