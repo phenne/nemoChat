@@ -18,6 +18,8 @@ public class Dialog {
     @Id
     private ObjectId id;
 
+    private String dialogName;
+
     @DBRef
     private User dialogCreator;
 

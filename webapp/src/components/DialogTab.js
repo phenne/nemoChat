@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 class DialogTab extends React.Component {
 
     render() {
-        let {author, content, time, id, checked, display} = this.props;
+        let {header, lastMessage, isUserMessage, unreadCount, display} = this.props;
 
         let disp;
 
@@ -16,20 +16,20 @@ class DialogTab extends React.Component {
 
         return (
             <div className="DialogTab" style={disp}>
-                <p className="DialogTabName">{author}</p>
+                <p className="DialogTabName">{header}</p>
                 <span className="DialogTabSettings"/>
                 <span className="DialogTabNotification">2</span>
-                <p className="DialogTabContent">{content}</p>
-                <span className="DialogTabTime">{time.toLocaleTimeString()}</span>
+                <p className="DialogTabContent">{lastMessage.messageText}</p>
+                <span className="DialogTabTime">{lastMessage.creationDate}</span>
             </div>
         )
     }
 }
 
-DialogTab.propTypes = {
-    author: PropTypes.string.isRequired,
-    content: PropTypes.string.isRequired,
-    time: PropTypes.instanceOf(Date).isRequired
-}
+// DialogTab.propTypes = {
+//     author: PropTypes.string.isRequired,
+//     content: PropTypes.string.isRequired,
+//     // time: PropTypes.instanceOf(Date).isRequired
+// }
 
 export default DialogTab

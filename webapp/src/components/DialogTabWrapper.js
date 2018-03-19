@@ -8,13 +8,13 @@ import {connect} from "react-redux";
 class DialogTabWrapper extends React.Component {
 
     render() {
-        const dialogTabs = this.props.dialogTabs;
+        const dialogTabs = this.props.dialogTabs
         return (
             <div className="DialogTabWrapper">
                 <DialogSearchWrapper/>
                 <div className="MessagingWrapperScroller">
                     <button className="NewDialogButton">Найти собеседника</button>
-                    {dialogTabs.map((item, i) => (<DialogTab key={i} {...item} />))}
+                    {dialogTabs.map((item, i) => (<DialogTab key={i} {...item}/>))}
                 </div>
             </div>
         )
@@ -26,7 +26,7 @@ DialogTabWrapper.propTypes = {
         PropTypes.shape({
             author: PropTypes.string.isRequired,
             content: PropTypes.string.isRequired,
-            time: PropTypes.instanceOf(Date).isRequired
+            // time: PropTypes.instanceOf(Date).isRequired
         })
     )
 }
