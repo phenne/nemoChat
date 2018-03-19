@@ -1,14 +1,12 @@
 package com.driusandilham.nemochat.service;
 
 import com.driusandilham.nemochat.db.entity.Dialog;
-
-import java.util.List;
+import com.driusandilham.nemochat.db.entity.Message;
 
 /**
  * @author drius on 18.03.2018.
  */
+public interface MessageService {
 
-public interface DialogService {
-
-    List<Dialog> getDialogsByUsername(String userName);
+    Message getLastMessageByDialog(Dialog dialog);
 }

@@ -24,7 +24,7 @@ function dialogs (state = [], action) {
 function searchDialogReduce(state, action) {
     let new_dialogs = [...state];
     new_dialogs.map((item, index, arr) => {
-        item.display = !item.author.toLowerCase().indexOf(action.searchString.toLowerCase());
+        item.display = !item.header.toLowerCase().indexOf(action.searchString.toLowerCase());
     });
     return new_dialogs
 }

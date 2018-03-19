@@ -14,5 +14,5 @@ import java.util.List;
 @Repository
 public interface DialogRepository extends MongoRepository<Dialog, ObjectId> {
 
-    List<Dialog> findDialogByParticipantsContains(User user);
+    List<Dialog> findDialogsByParticipantsContains(User user);
 }

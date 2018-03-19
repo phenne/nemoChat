@@ -1,40 +1,14 @@
 import React from 'react'
-import { render } from 'react-dom'
-import { createStore } from 'redux'
-import { Provider } from 'react-redux'
-import { AppContainer } from 'react-hot-loader'
-
+import {render} from 'react-dom'
+import {createStore} from 'redux'
+import {Provider} from 'react-redux'
+import {AppContainer} from 'react-hot-loader'
 import App from './components/App'
 import appReducer from './reducers'
+import * as axios from 'axios'
 
 
 let state = {
-    dialogs: [
-        {
-            author: "Pascal",
-            content: "message text...",
-            time: new Date(),
-            id: 1,
-            checked: false,
-            display: true
-        },
-        {
-            author: "Sockrat",
-            content: "message text...",
-            time: new Date(),
-            id: 2,
-            checked: true,
-            display: true
-        },
-        {
-            author: "Dijkstra",
-            content: "message text...",
-            time: new Date(),
-            id: 2,
-            checked: false,
-            display: true
-        }
-    ],
     dialogWrapper: {
         author: "checked",
         messages: [
@@ -70,14 +44,32 @@ let state = {
     }
 }
 
-let store = createStore(appReducer, state);
+let store
 
-render(
-    <AppContainer>
-        <Provider store={store}>
-            <App/>
-        </Provider>
-     </AppContainer>,
-    document.getElementById('root')
-)
+async function configureState() {
 
+    const dialogTabsResponse = await getDialogTabs();
+    state.dialogs = dialogTabsResponse.data;
+    state.dialogs.forEach(item => {
+        item.display = true
+    })
+}
+
+configureState().then(() => {
+    console.log(state)
+    store = createStore(appReducer, state)
+
+    render(
+        <AppContainer>
+            <Provider store={store}>
+                <App/>
+            </Provider>
+        </AppContainer>,
+        document.getElementById('root')
+    )
+})
+
+
+async function getDialogTabs() {
+    return axios.get("/dialogTab/andrey")
+}

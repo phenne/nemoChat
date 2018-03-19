@@ -21,7 +21,7 @@ public class DialogServiceImpl implements DialogService {
     @Override
     public List<Dialog> getDialogsByUsername(String userName) {
         User user = userRepository.getUserByUserName(userName);
-        return dialogRepository.findDialogByParticipantsContains(user);
+        return dialogRepository.findDialogsByParticipantsContains(user);
     }
 
     @Autowired
